@@ -1,0 +1,31 @@
+<div class="container-fluid py-4">
+  <!-- Banner de Error Reactivo Interceptado -->
+  <div *ngIf="error$ | async as errorMessage" class="alert alert-danger alert-dismissible fade show">
+    <strong>⚠️ Notificación del Servidor:</strong> {{ errorMessage }}
+  </div>
+
+  <div class="row">
+    <!-- Columna Izquierda: Dumb Component Formulario -->
+    <div class="col-lg-4 mb-4">
+      <app-empleado-form
+        [empleado]="selectedEmpleado$ | async"
+        [isSubmitting]="loading$ | async"
+        (onSave)="handleSave($event)"
+        (onCancel)="handleCancel()"
+      >
+      </app-empleado-form>
+    </div>
+
+    <!-- Columna Derecha: Dumb Component Rejilla de Datos -->
+    <div class="col-lg-8">
+      <app-empleado-table
+        [empleados]="empleados$ | async"
+        [isLoading]="loading$ | async"
+        (onEdit)="handleEdit($event)"
+        (onDelete)="handleDelete($event)"
+        (onRefresh)="handleRefresh()"
+      >
+      </app-empleado-table>
+    </div>
+  </div>
+</div>

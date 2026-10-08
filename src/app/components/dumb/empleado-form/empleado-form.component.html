@@ -1,0 +1,65 @@
+<div class="card shadow-sm border-0 mb-4">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">{{ empleado ? '✏️ Modificar Empleado' : '➕ Alta de Nuevo Empleado' }}</h5>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="mb-3">
+        <label class="form-label font-weight-bold">Nombre Completo</label>
+        <input
+          type="text"
+          formControlName="nombre"
+          class="form-control"
+          placeholder="Ej. Ing. Carlos Mendoza"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label font-weight-bold">Cargo o Posición</label>
+        <input
+          type="text"
+          formControlName="cargo"
+          class="form-control"
+          placeholder="Ej. Arquitecto de Software"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label font-weight-bold">Departamento</label>
+        <select formControlName="departamento" class="form-select form-control">
+          <option *ngFor="let dep of departamentos" [value]="dep">{{ dep }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label font-weight-bold">Sueldo Mensual ($ USD)</label>
+        <input
+          type="number"
+          formControlName="sueldo"
+          class="form-control"
+          placeholder="Ej. 3500"
+        />
+      </div>
+
+      <div class="d-flex gap-2">
+        <button
+          type="submit"
+          class="btn btn-primary flex-grow-1"
+          [disabled]="form.invalid || isSubmitting"
+        >
+          {{ isSubmitting ? 'Guardando...' : (empleado ? 'Guardar Cambios' : 'Registrar Empleado') }}
+        </button>
+
+        <button
+          *ngIf="empleado"
+          type="button"
+          class="btn btn-secondary"
+          (click)="cancel()"
+          [disabled]="isSubmitting"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

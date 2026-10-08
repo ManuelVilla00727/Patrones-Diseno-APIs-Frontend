@@ -1,0 +1,53 @@
+<div class="card shadow-sm border-0">
+  <div class="card-header bg-light d-flex justify-content-between align-items-center">
+    <div>
+      <h5 class="mb-0 text-dark">📋 Rejilla Reactiva de Empleados</h5>
+      <small class="text-muted">Total: {{ (empleados || []).length }} registros</small>
+    </div>
+    <button class="btn btn-sm btn-outline-primary" (click)="refresh()" [disabled]="isLoading">
+      🔄 Refrescar
+    </button>
+  </div>
+
+  <div class="card-body p-0">
+    <div *ngIf="isLoading" class="p-4 text-center text-muted">
+      <div class="spinner-border spinner-border-sm text-primary me-2"></div>
+      Sincronizando flujo reactivo RxJS...
+    </div>
+
+    <div class="table-responsive" *ngIf="!isLoading">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Nombre</th>
+            <th>Cargo</th>
+            <th>Departamento</th>
+            <th>Sueldo</th>
+            <th class="text-center">Operaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of empleados">
+            <td class="fw-bold">{{ emp.nombre }}</td>
+            <td>{{ emp.cargo }}</td>
+            <td><span class="badge bg-info text-dark">{{ emp.departamento }}</span></td>
+            <td>${{ emp.sueldo }}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-outline-warning me-2" (click)="edit(emp)">
+                ✏️ Editar
+              </button>
+              <button class="btn btn-sm btn-outline-danger" (click)="delete(emp._id)">
+                🗑️ Eliminar
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="(!empleados || empleados.length === 0)">
+            <td colspan="5" class="text-center py-4 text-muted">
+              No hay empleados registrados en el sistema.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

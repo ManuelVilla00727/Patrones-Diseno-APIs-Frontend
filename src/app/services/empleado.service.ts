@@ -8,7 +8,7 @@ import { Empleado, ApiResponse, CreateEmpleadoDTO, UpdateEmpleadoDTO } from '../
   providedIn: 'root'
 })
 export class EmpleadoService {
-  private readonly URL_API = 'http://localhost:3000/api/v1/empleados';
+  private readonly URL_API = 'http://3.214.243.100/api/v1/empleados';
 
   // 1. [Reto 3] BehaviorSubjects estrictamente privados para encapsular el estado
   private readonly _empleados$ = new BehaviorSubject<Empleado[]>([]);

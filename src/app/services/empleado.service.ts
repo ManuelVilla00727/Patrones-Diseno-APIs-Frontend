@@ -8,7 +8,7 @@ import { Empleado, ApiResponse, CreateEmpleadoDTO, UpdateEmpleadoDTO } from '../
   providedIn: 'root'
 })
 export class EmpleadoService {
-  private readonly URL_API = 'https://phi-tions-evening-dir.trycloudflare.com/api/v1/empleados';
+  private readonly URL_API = 'https://statute-helped-soil-turning.trycloudflare.com/api/v1/empleados';
 
   // 1. [Reto 3] BehaviorSubjects estrictamente privados para encapsular el estado
   private readonly _empleados$ = new BehaviorSubject<Empleado[]>([]);

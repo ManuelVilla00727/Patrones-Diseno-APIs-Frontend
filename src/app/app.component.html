@@ -2,13 +2,13 @@
   <div class="container d-flex justify-content-between align-items-center">
     <div>
       <h4 class="mb-0 fw-bold">🏢 Sistema de Gestión de Personal</h4>
-      <small class="text-white-50">Stack MEAN | Maestría en Software (Práctica 03)</small>
+      <small class="text-white-50">Stack MEAN | Maestría en Software (Práctica 05 - JWT)</small>
     </div>
     <span class="badge bg-success px-3 py-2">Arquitectura Reactiva Smart / Dumb</span>
   </div>
 </header>
 
 <main class="container">
-  <!-- Invoca al Smart Component Orquestador -->
-  <app-empleado-container></app-empleado-container>
+  <!-- Aquí se cargan los componentes según la ruta (login o empleados) -->
+  <router-outlet></router-outlet>
 </main>

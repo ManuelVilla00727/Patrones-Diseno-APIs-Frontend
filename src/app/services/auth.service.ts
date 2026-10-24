@@ -8,7 +8,7 @@ import { map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private API_URL = 'https://statute-helped-soil-turning.trycloudflare.com/api/v1/auth';
+  private API_URL = 'https://subscriptions-hang-hub-buying.trycloudflare.com/api/v1/auth';
   private TOKEN_KEY = 'access_token';
   private isBrowser: boolean;
   
